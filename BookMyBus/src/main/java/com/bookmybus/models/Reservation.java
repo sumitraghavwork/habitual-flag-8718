@@ -5,7 +5,11 @@ import java.time.LocalTime;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+import org.hibernate.annotations.GeneratorType;
 import org.springframework.stereotype.Repository;
 
 import lombok.AllArgsConstructor;
@@ -21,6 +25,8 @@ import lombok.ToString;
 @Entity
 public class Reservation {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer reservationId;
 	private String reservationStatus;
 	private String reservationType;
