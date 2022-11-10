@@ -3,11 +3,13 @@ package com.bookmybus.models;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GeneratorType;
 import org.springframework.stereotype.Repository;
@@ -21,7 +23,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Repository
 @Entity
 public class Reservation {
 	
@@ -34,7 +35,7 @@ public class Reservation {
 	private LocalTime reservationTime;
 	private String source;
 	
-	@Embedded
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Bus bus;
 
 }
