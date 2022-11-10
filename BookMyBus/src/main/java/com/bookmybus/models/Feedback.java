@@ -41,7 +41,7 @@ public class Feedback {
 	@NotNull(message = "Comment should not be null")
 	@NotBlank(message = "Comment should not be blank...!")
 	private String comments;
-	
+
 	private LocalDate feedbackdate;
 	private User user;
 	private Bus bus;
