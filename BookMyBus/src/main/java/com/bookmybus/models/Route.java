@@ -42,5 +42,4 @@ public class Route {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "route")
 	private List<Bus> busList = new ArrayList<>();
-
 }
