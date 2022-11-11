@@ -8,6 +8,6 @@ import com.bookmybus.models.Admin;
 @Repository
 public interface AdminRepo extends JpaRepository<Admin, Integer>{
 
-	public Admin findByadminUsername(String userName);
+	public Admin findByAdminUsername(String userName);
 
 }

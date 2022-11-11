@@ -34,7 +34,7 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public String loginAdmin(AdminDto admin) throws LoginException {
 
-		Admin existingUser = adminRepo.findByadminUsername(admin.getAdminUsername());
+		Admin existingUser = adminRepo.findByAdminUsername(admin.getAdminUsername());
 
 		if (existingUser == null)
 			throw new LoginException("Invalid credentials. Username does not exist " + admin.getAdminUsername());

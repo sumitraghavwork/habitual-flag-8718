@@ -31,77 +31,53 @@ import com.bookmybus.models.User;
 public class UserController {
 
 	@Autowired
-	private LoginService loginService;
-
-	@Autowired
 	private UserService userService;
 
-	@PostMapping("/userLogin")
-	public ResponseEntity<String> loginUserHandler(@Valid @RequestBody UserDto user) throws LoginException {
-
-		String res = loginService.loginUser(user);
-
-		return new ResponseEntity<String>(res, HttpStatus.OK);
-
-	}
-
-	@PostMapping("/userLogout")
-	public ResponseEntity<String> logoutUserHandler(@RequestParam("key") String key) throws LoginException {
-
-		String res = loginService.logoutUser(key);
-
-		return new ResponseEntity<String>(res, HttpStatus.OK);
-
-	}
-	
 	@GetMapping("/users/{username}")
-	public ResponseEntity<User> getUserDetailsHandler(@PathVariable String username) throws UserException{
-		
+	public ResponseEntity<User> getUserDetailsHandler(@PathVariable String username) throws UserException {
+
 		User existingUser = userService.findByUserName(username);
-		
+
 		return new ResponseEntity<User>(existingUser, HttpStatus.OK);
-		
+
 	}
-	
+
 	@GetMapping("/users")
-	public ResponseEntity<List<User>> getAllUserDetailsHandler() throws UserException{
-		
+	public ResponseEntity<List<User>> getAllUserDetailsHandler() throws UserException {
+
 		List<User> userList = userService.findAllUsers();
-		
+
 		return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
-		
+
 	}
 
 	@PostMapping("/users")
 	public ResponseEntity<User> registerUserHandler(@Valid @RequestBody User user) throws UserException {
-		
-		System.out.println(user.getEmail());
+
 		User savedUser = userService.saveUser(user);
-		
-		
+
 		return new ResponseEntity<User>(savedUser, HttpStatus.OK);
 
 	}
-	
-	
+
 	@PutMapping("/users")
-	public  ResponseEntity<User> updateUserHandler(@Valid @RequestBody User user,@RequestParam("key") String key ) throws UserException, LoginException {
-		
-		
-		User updatedUser= userService.updateUser(user, key);
-				
-		return new ResponseEntity<User>(updatedUser,HttpStatus.OK);
-		
+	public ResponseEntity<User> updateUserHandler(@Valid @RequestBody User user, @RequestParam("key") String key)
+			throws UserException, LoginException {
+
+		User updatedUser = userService.updateUser(user, key);
+
+		return new ResponseEntity<User>(updatedUser, HttpStatus.OK);
+
 	}
-	
+
 	@DeleteMapping("/users/{username}")
-	public  ResponseEntity<User> deleteUserHandler(@PathVariable("username") String username ) throws UserException, LoginException {
-		
-		
-		User updatedUser= userService.deleteUser(username);
-				
-		return new ResponseEntity<User>(updatedUser,HttpStatus.OK);
-		
+	public ResponseEntity<User> deleteUserHandler(@PathVariable("username") String username)
+			throws UserException, LoginException {
+
+		User updatedUser = userService.deleteUser(username);
+
+		return new ResponseEntity<User>(updatedUser, HttpStatus.OK);
+
 	}
-	
+
 }

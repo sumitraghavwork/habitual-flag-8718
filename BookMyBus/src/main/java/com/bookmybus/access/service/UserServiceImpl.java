@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 		if (user.getUserLoginId() == loggedInUser.getUserId()) {
 			return uRepo.save(user);
 		} else
-			throw new LoginException("Invalid Customer Details, please login first");
+			throw new LoginException("Invalid User Details, please login first");
 
 	}
 
@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
 		User existingUser = uRepo.findByUserName(username);
 
 		if (existingUser == null)
-			throw new UserException("User does not exists with this email " + username);
+			throw new UserException("User does not exists with this username " + username);
 
 		uRepo.delete(existingUser);
 
