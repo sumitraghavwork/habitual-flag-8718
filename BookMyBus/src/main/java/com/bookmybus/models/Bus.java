@@ -7,7 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToOne;
+
 
 
 import lombok.AllArgsConstructor;
@@ -32,7 +34,9 @@ public class Bus {
 	private Integer seats;
 	private Integer availableSeats;
 	
+
 //	@ManyToOne
 //	private Route route;
+
 
 }
