@@ -18,12 +18,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Repository
-@Entity
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@ToString
+//@Repository
+//@Entity
 public class Feedback {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

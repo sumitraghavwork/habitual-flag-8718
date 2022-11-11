@@ -15,12 +15,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Repository
-@Entity
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@ToString
+//@Repository
+//@Entity
 public class Bus {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

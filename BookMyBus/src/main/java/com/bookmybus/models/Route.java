@@ -19,12 +19,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Repository
-@Entity
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@ToString
+//@Repository
+//@Entity
 public class Route {
 	
 	@Id

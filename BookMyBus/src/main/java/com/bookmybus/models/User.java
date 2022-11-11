@@ -10,12 +10,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Entity
-@Repository
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@ToString
+//@Entity
+//@Repository
 public class User {
 	
 	private Integer userLoginId;
