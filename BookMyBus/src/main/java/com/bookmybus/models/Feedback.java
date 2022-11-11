@@ -1,11 +1,14 @@
 package com.bookmybus.models;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -22,9 +25,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Repository
 @Entity
 public class Feedback {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer feedbackId;
@@ -43,7 +46,11 @@ public class Feedback {
 	private String comments;
 	
 	private LocalDate feedbackdate;
-	private User user;
-	private Bus bus;
+	
+//	@Embedded
+//	private User user;
+//	
+//	@Embedded
+//	private Bus buses;
 
 }	

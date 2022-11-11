@@ -14,6 +14,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +25,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Repository
 @Entity
 public class Route {
 	
@@ -40,6 +41,13 @@ public class Route {
 	private String routeTo;
 	private Integer distance;
 	
+
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "route")
+//	@JsonIgnore
+//	private List<Bus> busList = new ArrayList<>();
+
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "route")
 	private List<Bus> busList = new ArrayList<>();
+
 }
