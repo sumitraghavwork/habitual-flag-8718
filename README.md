@@ -38,7 +38,7 @@
 
 <h1 align="center">App Screenshot</h1>
 
-<p align="center"> <img src="" alt="sumitraghavwork" style="border-radius:20px"/> </p>
+<p align="center"> <img src="./webContent/ER_diagram.png" alt="sumitraghavwork" style="border-radius:20px"/> </p>
 
 ## Appendix
 
