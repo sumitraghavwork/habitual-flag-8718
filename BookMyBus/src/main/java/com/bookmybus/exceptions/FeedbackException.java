@@ -10,7 +10,6 @@ public class FeedbackException extends Exception {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
-
 	
 	
 }

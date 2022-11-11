@@ -2,6 +2,7 @@ package com.bookmybus.models;
 
 import java.time.LocalDate;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -43,7 +44,9 @@ public class Feedback {
 	private String comments;
 
 	private LocalDate feedbackdate;
+/*	@Embedded
 	private User user;
+	@Embedded
 	private Bus bus;
-
+*/
 }	
