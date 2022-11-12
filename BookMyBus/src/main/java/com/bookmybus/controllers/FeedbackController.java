@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookmybus.access.exceptions.UserException;
 import com.bookmybus.exceptions.FeedbackException;
+import com.bookmybus.exceptions.ReservationException;
 import com.bookmybus.models.Feedback;
 import com.bookmybus.services.FeedbackService;
 
@@ -26,9 +29,9 @@ public class FeedbackController {
 	private FeedbackService feedbackService;
 	
 	@PostMapping("/feedbacks")
-	public ResponseEntity<Feedback> addFeedbackHandler(@RequestBody Feedback feedback) throws FeedbackException {
+	public ResponseEntity<Feedback> addFeedbackHandler(@RequestParam String key,@RequestParam Integer reservationId, @RequestBody Feedback feedback) throws FeedbackException, UserException, ReservationException {
 		
-		Feedback addFeedback = feedbackService.addFeedBack(feedback);		
+		Feedback addFeedback = feedbackService.addFeedBack(feedback, key, reservationId);		
 		
 		return new ResponseEntity<Feedback>(addFeedback, HttpStatus.OK);
 	}
