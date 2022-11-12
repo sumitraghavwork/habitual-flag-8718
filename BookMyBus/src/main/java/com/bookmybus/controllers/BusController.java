@@ -27,7 +27,7 @@ public class BusController {
 	@Autowired
 	private BusService busService;
 
-	// ***************************************************************************************************************
+	// **************************************************************************************************************
 	@PostMapping("/bus")
 	public ResponseEntity<Bus> addRoute(@RequestBody Bus bus, @RequestParam String key)
 			throws BusException, AdminException, LoginException {
@@ -37,7 +37,7 @@ public class BusController {
 		return new ResponseEntity<Bus>(newBus, HttpStatus.OK);
 	}
 
-	// ***************************************************************************************************************
+	// **************************************************************************************************************
 	@PutMapping("/updateBus")
 	public ResponseEntity<Bus> updateBus(@RequestBody Bus bus, @RequestParam String key)
 			throws BusException, AdminException, LoginException {
@@ -66,7 +66,7 @@ public class BusController {
 		return new ResponseEntity<List<Bus>>(listOfBuses, HttpStatus.OK);
 	}
 
-	// ***************************************************************************************************************
+	// **************************************************************************************************************
 	@GetMapping("/viewAllBus")
 	public ResponseEntity<List<Bus>> viewAllBus() throws BusException {
 
