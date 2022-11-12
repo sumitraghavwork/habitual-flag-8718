@@ -29,7 +29,7 @@ public class FeedbackController {
 	private FeedbackService feedbackService;
 	
 	@PostMapping("/feedbacks")
-	public ResponseEntity<Feedback> addFeedbackHandler(@RequestParam String key,@RequestParam Integer reservationId, @RequestBody Feedback feedback) throws FeedbackException, UserException, ReservationException {
+	public ResponseEntity<Feedback> addFeedbackHandler(@RequestParam String key,@RequestParam Integer reservationId, @RequestBody Feedback feedback) throws FeedbackException, UserException,ReservationException  {
 		
 		Feedback addFeedback = feedbackService.addFeedBack(feedback, key, reservationId);		
 		

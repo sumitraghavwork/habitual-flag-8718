@@ -4,6 +4,7 @@ package com.bookmybus.services;
 import java.util.List;
 
 import com.bookmybus.exceptions.RouteException;
+import com.bookmybus.models.Bus;
 import com.bookmybus.models.Route;
 
 public interface RouteService {
@@ -15,6 +16,6 @@ public interface RouteService {
     public Route viewRoute(int routeId) throws RouteException;
     public List<Route> viewAllRoute() throws RouteException;
    
-
+    public List<Bus> viewAllBuses(Integer routeId) throws RouteException;
 
 }

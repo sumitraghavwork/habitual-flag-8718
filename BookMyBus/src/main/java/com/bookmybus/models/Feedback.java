@@ -28,11 +28,11 @@ import lombok.ToString;
 @ToString
 @Entity
 public class Feedback {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer feedbackId;
-	
+
 	@Min(1)
 	@Max(5)
 	private Integer driverRating;
@@ -45,13 +45,13 @@ public class Feedback {
 	@NotNull(message = "Comment should not be null")
 	@NotBlank(message = "Comment should not be blank...!")
 	private String comments;
-	
+
 	private LocalDate feedbackdate;
-	
+
 	@OneToOne
 	private User user;
-	
+
 	@OneToOne
 	private Reservation reservation;
 
-}	
+}

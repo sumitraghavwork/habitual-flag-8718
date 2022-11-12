@@ -143,6 +143,17 @@ public class RouteServiceImplementation implements RouteService {
 		       }
 	}
 
+	@Override
+	public List<Bus> viewAllBuses(Integer routeId) throws RouteException {
+		
+		List<Bus> busList = routeRepo.getBusListFromRouteByRouteId(routeId);
+		
+		if(busList.isEmpty())
+			throw new RouteException("No Bus on this route found");
+		
+		return busList;
+	}
+
 
 
 	
