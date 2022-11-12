@@ -65,8 +65,13 @@ public class FeedbackServiceImplementation implements FeedbackService {
 	public Feedback deleteFeedBack(Integer feedbackId) throws FeedbackException {
 		Optional<Feedback> feedback = fDao.findById(feedbackId);
 		if (feedback.isPresent()) {
+			Feedback existingfeedback = feedback.get();
+
+			existingfeedback.setUser(null);
+			existingfeedback.setReservation(null);
+
 			fDao.deleteById(feedbackId);
-			return feedback.get();
+			return existingfeedback;
 		} else {
 			throw new FeedbackException("No feedback found with given feedbackId :" + feedbackId);
 		}

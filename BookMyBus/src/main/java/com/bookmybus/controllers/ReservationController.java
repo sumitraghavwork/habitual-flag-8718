@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookmybus.access.exceptions.AdminException;
+import com.bookmybus.access.exceptions.LoginException;
 import com.bookmybus.access.exceptions.UserException;
 import com.bookmybus.exceptions.BusException;
 import com.bookmybus.exceptions.ReservationException;
@@ -31,7 +33,7 @@ public class ReservationController {
 	private ReservationServices reservationService;
 
 	@PostMapping("/reservations")
-	public ResponseEntity<Reservation> addReservation(@Valid @RequestBody Reservation reservation,@RequestParam String key, @RequestParam Integer busId) throws ReservationException, BusException, UserException {
+	public ResponseEntity<Reservation> addReservation(@Valid @RequestBody Reservation reservation,@RequestParam String key, @RequestParam Integer busId) throws ReservationException, BusException, UserException, LoginException, AdminException {
 
 		Reservation savedReservation = reservationService.addReservation(reservation,busId, key);
 
@@ -42,7 +44,7 @@ public class ReservationController {
 	@PutMapping("/reservations/{reservationId}")
 	public ResponseEntity<Reservation> addReservation(@Valid @RequestBody Reservation reservation,
 			@PathVariable("reservationId") Integer reservationId, @RequestParam String key)
-			throws ReservationException, BusException, UserException {
+			throws ReservationException, BusException, UserException, LoginException, AdminException {
 
 		Reservation savedReservation = reservationService.updateReservation(reservation, reservationId, key);
 
@@ -61,7 +63,7 @@ public class ReservationController {
 	}
 
 	@GetMapping("/reservations")
-	public ResponseEntity<List<Reservation>> addReservation(@RequestParam String key)
+	public ResponseEntity<List<Reservation>> viewAllReservationsHandler(@RequestParam String key)
 			throws ReservationException, BusException, UserException {
 
 		List<Reservation> savedReservations = reservationService.viewAllReservation(key);
@@ -70,10 +72,12 @@ public class ReservationController {
 
 	}
 
-	@DeleteMapping("/reservation/{id}")
-	public ResponseEntity<Reservation> deleteReservation(@PathVariable("id") Integer reservationId,
-			@RequestParam(required = false) String key) throws ReservationException, BusException, UserException {
+	@DeleteMapping("/reservation/{reservationId}")
+	public ResponseEntity<Reservation> deleteReservation(@PathVariable("reservationId") Integer reservationId,
+			@RequestParam String key) throws ReservationException, BusException, UserException, LoginException, AdminException {
+		
 		Reservation deletedReservation = reservationService.deleteReservation(reservationId, key);
+		
 		return new ResponseEntity<Reservation>(deletedReservation, HttpStatus.OK);
 	}
 

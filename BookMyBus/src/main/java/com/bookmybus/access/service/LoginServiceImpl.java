@@ -50,10 +50,10 @@ public class LoginServiceImpl implements LoginService {
 		if (existingUser.getAdminPassword().equals(admin.getAdminPassword())) {
 
 			String key = RandomString.make(6);
-			
-			String role = "admin";
 
-			CurrentUserSession currentUserSession = new CurrentUserSession(existingUser.getAdminId(), key,role,
+			Boolean isAdmin = true;
+
+			CurrentUserSession currentUserSession = new CurrentUserSession(existingUser.getAdminId(), key, isAdmin,
 					LocalDateTime.now());
 
 			currUserSession.save(currentUserSession);
@@ -84,9 +84,9 @@ public class LoginServiceImpl implements LoginService {
 
 			String key = RandomString.make(6);
 			
-			String role = "user";
+			Boolean isAdmin = false;
 
-			CurrentUserSession currentUserSession = new CurrentUserSession(existingUser.getUserLoginId(), key,role,
+			CurrentUserSession currentUserSession = new CurrentUserSession(existingUser.getUserLoginId(), key, isAdmin,
 					LocalDateTime.now());
 
 			currUserSession.save(currentUserSession);
@@ -113,7 +113,7 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public String logoutUser(String key) throws LoginException {
-		
+
 		CurrentUserSession validCustomerSession = currUserSession.findByUuid(key);
 
 		if (validCustomerSession == null) {
