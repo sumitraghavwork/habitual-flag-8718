@@ -47,12 +47,20 @@ public class GlobalExceptionHandler {
 		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), e.getMessage(), web.getDescription(false));
 
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
-	}
+	}		
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<MyErrorDetails> myMANVExceptionHandler(MethodArgumentNotValidException me) {
 		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), "Validation Error",
 				me.getBindingResult().getFieldError().getDefaultMessage());
 		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(ReservationException.class)
+	public ResponseEntity<MyErrorDetails> reservationExceptionHandler(ReservationException e, WebRequest web) {
+
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), e.getMessage(), web.getDescription(false));
+
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
 	}
 }
