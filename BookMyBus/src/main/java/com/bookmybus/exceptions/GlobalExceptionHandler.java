@@ -16,7 +16,15 @@ import com.bookmybus.access.exceptions.UserException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+	
+	@ExceptionHandler(BusException.class)
+	public ResponseEntity<MyErrorDetails> myBusExceptionHandler(BusException e, WebRequest web) {
 
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), e.getMessage(), web.getDescription(false));
+
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+	}
+	
 	@ExceptionHandler(LoginException.class)
 	public ResponseEntity<MyErrorDetails> myLoginExceptionHandler(LoginException e, WebRequest web) {
 
@@ -58,6 +66,14 @@ public class GlobalExceptionHandler {
 	
 	@ExceptionHandler(ReservationException.class)
 	public ResponseEntity<MyErrorDetails> reservationExceptionHandler(ReservationException e, WebRequest web) {
+
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), e.getMessage(), web.getDescription(false));
+
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<MyErrorDetails> myExceptionHandler(Exception e, WebRequest web) {
 
 		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), e.getMessage(), web.getDescription(false));
 

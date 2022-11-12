@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -68,8 +69,10 @@ public class Bus {
 
 	@Min(0)
 	private Integer availableSeats;
-
+	
+	
 	@ManyToOne
+	@JsonIgnore
 	private Route route;
 
 }

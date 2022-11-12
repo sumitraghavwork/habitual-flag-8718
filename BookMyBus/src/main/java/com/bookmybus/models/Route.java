@@ -1,7 +1,9 @@
 package com.bookmybus.models;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -47,8 +49,9 @@ public class Route {
 	
 
 
-    @JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "route")
+    
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "route")
+	@JsonIgnore
 	private List<Bus> busList = new ArrayList<>();
 
 }
