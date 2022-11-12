@@ -14,9 +14,12 @@ import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -35,8 +38,8 @@ public class Bus {
 	private Integer availableSeats;
 	
 
-//	@ManyToOne
-//	private Route route;
+	@ManyToOne
+	private Route route;
 
 
 }
