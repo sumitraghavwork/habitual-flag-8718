@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -47,10 +48,10 @@ public class Feedback {
 	
 	private LocalDate feedbackdate;
 	
-//	@Embedded
-//	private User user;
-//	
-//	@Embedded
-//	private Bus buses;
+	@OneToOne
+	private User user;
+	
+	@OneToOne
+	private Reservation reservation;
 
 }	

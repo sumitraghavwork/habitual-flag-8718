@@ -2,6 +2,7 @@ package com.bookmybus.models;
 
 import java.time.LocalTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,15 +32,15 @@ public class Bus {
 	private String busName;
 	private String driverName;
 	private String busType;
-	
 	private LocalTime arrivalTime;
 	private LocalTime departureTime;
 	private Integer seats;
 	private Integer availableSeats;
-	
+
 
 	@ManyToOne
 	private Route route;
+
 
 
 }

@@ -48,8 +48,8 @@ public class User {
 	@Email(message = "incorrect email")
 	@Column(unique = true)
 	private String email;
-
+	
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "bus")
+	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Reservation> reservations;
 }
