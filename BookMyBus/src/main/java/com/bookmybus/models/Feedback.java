@@ -3,6 +3,7 @@ package com.bookmybus.models;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,11 +48,11 @@ public class Feedback {
 	private String comments;
 
 	private LocalDate feedbackdate;
-
-	@OneToOne
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Reservation reservation;
 
 }

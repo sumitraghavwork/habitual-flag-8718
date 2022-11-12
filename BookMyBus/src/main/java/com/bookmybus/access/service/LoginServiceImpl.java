@@ -50,8 +50,10 @@ public class LoginServiceImpl implements LoginService {
 		if (existingUser.getAdminPassword().equals(admin.getAdminPassword())) {
 
 			String key = RandomString.make(6);
+			
+			String role = "admin";
 
-			CurrentUserSession currentUserSession = new CurrentUserSession(existingUser.getAdminId(), key,
+			CurrentUserSession currentUserSession = new CurrentUserSession(existingUser.getAdminId(), key,role,
 					LocalDateTime.now());
 
 			currUserSession.save(currentUserSession);
@@ -81,8 +83,10 @@ public class LoginServiceImpl implements LoginService {
 		if (existingUser.getPassword().equals(user.getPassword())) {
 
 			String key = RandomString.make(6);
+			
+			String role = "user";
 
-			CurrentUserSession currentUserSession = new CurrentUserSession(existingUser.getUserLoginId(), key,
+			CurrentUserSession currentUserSession = new CurrentUserSession(existingUser.getUserLoginId(), key,role,
 					LocalDateTime.now());
 
 			currUserSession.save(currentUserSession);

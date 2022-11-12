@@ -23,6 +23,8 @@ public class CurrentUserSession {
 	private Integer userId;
 
 	private String uuid;
+	
+	private String role;
 
 	private LocalDateTime localDateTime;
 }

@@ -58,20 +58,20 @@ public class RouteController {
 		return new ResponseEntity<Route>(viewRoute, HttpStatus.OK);
 	}
 
-	@GetMapping("/route")
+	@GetMapping("/routes")
 	public ResponseEntity<List<Route>> viewAllRoute() throws RouteException {
 		List<Route> allRoutes = routeService.viewAllRoute();
 
 		return new ResponseEntity<List<Route>>(allRoutes, HttpStatus.OK);
 	}
 
-//	@GetMapping("/route")
-//	public ResponseEntity<List<Bus>> viewAllBusesHandler(@RequestParam Integer routeId) throws RouteException {
-//		
-//		List<Bus> allRoutes = routeService.viewAllBuses(routeId);
-//
-//		return new ResponseEntity<List<Bus>>(allRoutes, HttpStatus.OK);
-//	}
+	@GetMapping("/route")
+	public ResponseEntity<List<Bus>> viewAllBusesHandler(@RequestParam Integer routeId) throws RouteException {
+		
+		List<Bus> allRoutes = routeService.viewAllBuses(routeId);
+
+		return new ResponseEntity<List<Bus>>(allRoutes, HttpStatus.OK);
+	}
 
 //	@GetMapping("/busroute/{id}")
 //	public ResponseEntity<List<BusDto>> viewListOfBusOnRoute(@PathVariable("id") Integer id) throws RouteException{

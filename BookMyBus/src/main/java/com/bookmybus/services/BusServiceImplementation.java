@@ -26,8 +26,14 @@ public class BusServiceImplementation implements BusService {
 		Route route=routeRepo.findByRouteFromAndRouteTo(bus.getRouteFrom(), bus.getRouteTo());
 		
 		if(route!=null) {
-			route.getBusList().add(bus);
+			
+			if(route.getBusList().contains(bus))
+				throw new BusException("Bus already exists");
+			
 			bus.setRoute(route);
+			route.getBusList().add(bus);
+			routeRepo.save(route);
+			
 			return busRepo.save(bus);
 		}
 		else {

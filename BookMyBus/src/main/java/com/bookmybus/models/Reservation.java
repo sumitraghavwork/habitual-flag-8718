@@ -15,10 +15,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -40,70 +41,6 @@ public class Reservation {
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private Bus bus;
-
-	public Integer getReservationId() {
-		return reservationId;
-	}
-
-	public void setReservationId(Integer reservationId) {
-		this.reservationId = reservationId;
-	}
-
-	public String getReservationStatus() {
-		return reservationStatus;
-	}
-
-	public void setReservationStatus(String reservationStatus) {
-		this.reservationStatus = reservationStatus;
-	}
-
-	public String getReservationType() {
-		return reservationType;
-	}
-
-	public void setReservationType(String reservationType) {
-		this.reservationType = reservationType;
-	}
-
-	public LocalDate getReservationDate() {
-		return reservationDate;
-	}
-
-	public void setReservationDate(LocalDate reservationDate) {
-		this.reservationDate = reservationDate;
-	}
-
-	public LocalTime getReservationTime() {
-		return reservationTime;
-	}
-
-	public void setReservationTime(LocalTime reservationTime) {
-		this.reservationTime = reservationTime;
-	}
-
-	public Integer getSeatsBooked() {
-		return seatsBooked;
-	}
-
-	public void setSeatsBooked(Integer seatsBooked) {
-		this.seatsBooked = seatsBooked;
-	}
-
-	public String getSource() {
-		return source;
-	}
-
-	public void setSource(String source) {
-		this.source = source;
-	}
-
-	public Bus getBus() {
-		return bus;
-	}
-
-	public void setBus(Bus bus) {
-		this.bus = bus;
-	}
 
 	@Override
 	public int hashCode() {
