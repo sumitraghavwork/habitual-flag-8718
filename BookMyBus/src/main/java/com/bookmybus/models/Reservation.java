@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GeneratorType;
 import org.springframework.stereotype.Repository;
@@ -35,7 +36,7 @@ public class Reservation {
 	private LocalTime reservationTime;
 	private String source;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Bus bus;
 
 }

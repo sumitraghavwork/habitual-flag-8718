@@ -22,13 +22,13 @@ import com.bookmybus.services.RouteService;
 
 
 @RestController
-public class RootController {
+public class RouteController {
 
 	@Autowired
 	private RouteService routeService;
 	
 	@PostMapping("/route")
-	public ResponseEntity<Route> addRoute(@RequestBody Route route) throws RouteException{
+	public ResponseEntity<Route> addRoute(@Valid @RequestBody Route route) throws RouteException{
 		
 		Route newRoute =    routeService.addRoute(route);
 		
@@ -64,4 +64,18 @@ public class RootController {
 		
 		return new ResponseEntity<List<Route>>(allRoutes, HttpStatus.OK);
 	}
+	
+//	@GetMapping("/busroute/{id}")
+//	public ResponseEntity<List<BusDto>> viewListOfBusOnRoute(@PathVariable("id") Integer id) throws RouteException{
+//		  List<BusDto> busdao =   routeService.viewListOfBusOnRoute(id);
+//		  
+//		  return new ResponseEntity<List<BusDto>>(busdao,HttpStatus.OK);
+//	}
+	
+//	@GetMapping("/rootdistance")
+//	public ResponseEntity<List<RouteDto>> getAllRouteDistanceInAsccending() throws RouteException{
+//		  List<RouteDto> allRouteList =   routeService.getAllRouteDistanceInAsccending();
+//		  
+//		  return new ResponseEntity<List<RouteDto>>(allRouteList,HttpStatus.OK);
+//	}
 }
