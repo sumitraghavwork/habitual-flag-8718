@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookmybus.access.exceptions.AdminException;
+import com.bookmybus.access.exceptions.LoginException;
 import com.bookmybus.exceptions.RouteException;
 import com.bookmybus.models.Bus;
 import com.bookmybus.models.Route;
@@ -28,24 +30,27 @@ public class RouteController {
 	private RouteService routeService;
 
 	@PostMapping("/route")
-	public ResponseEntity<Route> addRoute(@Valid @RequestBody Route route) throws RouteException {
+	public ResponseEntity<Route> addRoute(@Valid @RequestBody Route route, @RequestParam String key)
+			throws RouteException, AdminException, LoginException {
 
-		Route newRoute = routeService.addRoute(route);
+		Route newRoute = routeService.addRoute(route, key);
 
 		return new ResponseEntity<Route>(newRoute, HttpStatus.OK);
 	}
 
 	@PutMapping("/route")
-	public ResponseEntity<Route> updateRoute(@Valid @RequestBody Route route) throws RouteException {
-		Route updatedRoute = routeService.updateRoute(route);
+	public ResponseEntity<Route> updateRoute(@Valid @RequestBody Route route, @RequestParam String key)
+			throws RouteException, AdminException, LoginException {
+		Route updatedRoute = routeService.updateRoute(route, key);
 
 		return new ResponseEntity<Route>(updatedRoute, HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping("/route/{id}")
-	public ResponseEntity<Route> deleteRoute(@PathVariable Integer id) throws RouteException {
+	public ResponseEntity<Route> deleteRoute(@PathVariable Integer id, @RequestParam String key)
+			throws RouteException, AdminException, LoginException {
 
-		Route deletedRoute = routeService.deleteRoute(id);
+		Route deletedRoute = routeService.deleteRoute(id, key);
 
 		return new ResponseEntity<Route>(deletedRoute, HttpStatus.OK);
 	}
@@ -67,7 +72,7 @@ public class RouteController {
 
 	@GetMapping("/route")
 	public ResponseEntity<List<Bus>> viewAllBusesHandler(@RequestParam Integer routeId) throws RouteException {
-		
+
 		List<Bus> allRoutes = routeService.viewAllBuses(routeId);
 
 		return new ResponseEntity<List<Bus>>(allRoutes, HttpStatus.OK);

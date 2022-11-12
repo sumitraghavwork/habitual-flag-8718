@@ -18,6 +18,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -50,9 +52,11 @@ public class Feedback {
 	private LocalDate feedbackdate;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
 	private User user;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Reservation reservation;
 
 }

@@ -17,6 +17,14 @@ import com.bookmybus.access.exceptions.UserException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 	
+	@ExceptionHandler(FeedbackException.class)
+	public ResponseEntity<MyErrorDetails> myBusExceptionHandler(FeedbackException e, WebRequest web) {
+
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), e.getMessage(), web.getDescription(false));
+
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+	}
+	
 	@ExceptionHandler(BusException.class)
 	public ResponseEntity<MyErrorDetails> myBusExceptionHandler(BusException e, WebRequest web) {
 

@@ -12,6 +12,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -63,11 +64,11 @@ public class Bus {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
 	private LocalTime departureTime;
 
-	@Min(20)
-	@Max(45)
+	@Min(value = 20,message = "Min seats required is 20")
+	@Max(value = 50,message = "Min seats required is 50")
 	private Integer seats;
 
-	@Min(0)
+	@Min(value = 0,message = "Negative seats not allowed")
 	private Integer availableSeats;
 	
 	
