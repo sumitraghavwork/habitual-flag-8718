@@ -17,9 +17,14 @@
 <br>
 
 <h2 align="left">Technologies used: Back-End Development</h2>
-<h4 align="left">Java</h4>
-<h4 align="left">JDBC</h4>
-<h4 align="left">MySQL</h4>
+<h4 align="left">
+1. Core Java \n
+2. JPA with Hibernate \n
+3. Spring Boot \n
+4. Rest Controller \n
+5. JPA with Hibernate \n
+6. MySQL
+</h4>
 <br>
 
 <h2 align="left">==== Software And Tools Required ======</h2>
@@ -34,7 +39,10 @@
 ## Authors
 
 - [@sumitraghavwork](https://github.com/sumitraghavwork)
-- <h4 align="left">add rest of authors github link here</h4>
+- [@suraj9716](https://github.com/suraj9716)
+- [@VaibhavBedarkar](https://github.com/VaibhavBedarkar)
+- [@SuryAMoharana](https://github.com/SuryAMoharana)
+- [@Amit-singh-05](https://github.com/Amit-singh-05)
 
 <h1 align="center">App Screenshot</h1>
 
