@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmybus.access.exceptions.AdminException;
 import com.bookmybus.access.exceptions.LoginException;
+import com.bookmybus.exceptions.BusException;
 import com.bookmybus.exceptions.RouteException;
 import com.bookmybus.models.Bus;
 import com.bookmybus.models.Route;
@@ -76,6 +77,42 @@ public class RouteController {
 		List<Bus> allRoutes = routeService.viewAllBuses(routeId);
 
 		return new ResponseEntity<List<Bus>>(allRoutes, HttpStatus.OK);
+	}
+	
+	@GetMapping("/route/{from}/{to}")
+	public ResponseEntity<List<Bus>> viewAllBusesHandler(@PathVariable("from") String routeFrom, @PathVariable("to") String routeTo) throws RouteException,BusException {
+
+		List<Bus> allRoutes = routeService.viewAllBusesByRoute(routeFrom, routeTo);
+
+		return new ResponseEntity<List<Bus>>(allRoutes, HttpStatus.OK);
+	}
+
+	@GetMapping("/routesByAsc")
+	public ResponseEntity<List<Route>> viewAllRouteByAscending() throws RouteException {
+		List<Route> allRoutes = routeService.viewAllRouteSortByAscending();
+
+		return new ResponseEntity<List<Route>>(allRoutes, HttpStatus.OK);
+	}
+
+	@GetMapping("/routesByDes")
+	public ResponseEntity<List<Route>> viewAllRouteByDescinding() throws RouteException {
+		List<Route> allRoutes = routeService.viewAllRouteSortByDescinding();
+
+		return new ResponseEntity<List<Route>>(allRoutes, HttpStatus.OK);
+	}
+	
+	@GetMapping("/routesByKm")
+	public ResponseEntity<List<Route>> filterRouteByGreaterThanKm(@RequestParam Integer km) throws RouteException {
+		List<Route> allRoutes = routeService.filterRouteByGreaterThanKm(km);
+
+		return new ResponseEntity<List<Route>>(allRoutes, HttpStatus.OK);
+	}
+	
+	@GetMapping("/routesByMinMaxKm")
+	public ResponseEntity<List<Route>> filterRouteByKm(@RequestParam Integer min, @RequestParam Integer max) throws RouteException {
+		List<Route> allRoutes = routeService.filterRouteByKm(min, max);
+
+		return new ResponseEntity<List<Route>>(allRoutes, HttpStatus.OK);
 	}
 
 //	@GetMapping("/busroute/{id}")

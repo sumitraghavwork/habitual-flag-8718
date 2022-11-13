@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import com.bookmybus.access.dao.CurrentUserSessionRepo;
 import com.bookmybus.access.exceptions.AdminException;
 import com.bookmybus.access.exceptions.LoginException;
 import com.bookmybus.access.models.CurrentUserSession;
+import com.bookmybus.exceptions.BusException;
 import com.bookmybus.exceptions.RouteException;
 import com.bookmybus.models.Bus;
 import com.bookmybus.models.Route;
@@ -106,7 +109,7 @@ public class RouteServiceImplementation implements RouteService {
 
 	@Override
 	public Route viewRoute(int routeId) throws RouteException {
-		Route route = routeRepo.findById(routeId).orElseThrow(() -> new RouteException("mo route"));
+		Route route = routeRepo.findById(routeId).orElseThrow(() -> new RouteException("no route found with this routeId "+ routeId));
 		return route;
 	}
 
@@ -153,6 +156,105 @@ public class RouteServiceImplementation implements RouteService {
 			throw new RouteException("No Bus on this route found");
 
 		return busList;
+	}
+
+	@Override
+	public List<Bus> viewAllBusesByRoute(String routeFrom, String routeTo) throws RouteException, BusException {
+		                    
+		Route existingRoute = routeRepo.findByRouteFromAndRouteTo(routeFrom,routeTo);
+		
+		if(existingRoute!=null) {
+			   List<Bus> busList =       routeRepo.getBusListByRoute(routeFrom, routeTo);
+		          
+		      	if (busList.isEmpty())
+					throw new BusException("No Bus Scheduled in this route now");
+
+				return busList;  
+		}
+		else {
+			throw new RouteException("No Route Found with "+ " routeFrom "+ routeFrom +" To"+ " routeTo "+ routeTo);
+		}
+		
+		         
+	}
+
+	@Override
+	public List<Route> viewAllRouteSortByAscending() throws RouteException {
+		List<Route> allRoutes = routeRepo.findAll();
+
+		if (allRoutes.size() > 0) {
+			
+			Collections.sort(allRoutes, new Comparator<Route>() {
+
+				@Override
+				public int compare(Route o1, Route o2) {
+					return o1.getDistance()-o2.getDistance();
+				}
+			});
+
+			return allRoutes;
+		} else {
+			throw new RouteException("No Routes Avilable");
+		}
+	}
+
+	@Override
+	public List<Route> viewAllRouteSortByDescinding() throws RouteException {
+		List<Route> allRoutes = routeRepo.findAll();
+
+		if (allRoutes.size() > 0) {
+			
+			Collections.sort(allRoutes, new Comparator<Route>() {
+
+				@Override
+				public int compare(Route o1, Route o2) {
+					return o2.getDistance()-o1.getDistance();
+				}
+			});
+
+			return allRoutes;
+		} else {
+			throw new RouteException("No Routes Avilable");
+		}
+	}
+
+	@Override
+	public List<Route> filterRouteByGreaterThanKm(Integer distance) throws RouteException {
+		List<Route> allRoutes = routeRepo.findAll();
+		
+		 if(allRoutes.size()>0) {
+			List<Route> filteredRoute = allRoutes.stream().filter(s-> s.getDistance()>distance).collect(Collectors.toList());
+			
+			 if(filteredRoute.size()>0) {
+				 return filteredRoute;
+			 }
+			 else {
+				 throw new RouteException("No Route found greater than "+ distance+" km ");
+			 }
+		 }
+		 else {
+				throw new RouteException("No Routes Avilable");
+			}
+	
+	}
+
+	@Override
+	public List<Route> filterRouteByKm(Integer minkm, Integer maxkm) throws RouteException {
+		List<Route> allRoutes = routeRepo.findAll();
+		
+		 if(allRoutes.size()>0) {
+			List<Route> filteredRoute = allRoutes.stream().filter(s-> s.getDistance()>minkm && s.getDistance()<maxkm).collect(Collectors.toList());
+			
+			 if(filteredRoute.size()>0) {
+				 return filteredRoute;
+			 }
+			 else {
+				 throw new RouteException("No Route found bewteen "+ minkm+" Km "+ " To " +  maxkm+" Km ");
+			 }
+		 }
+		 else {
+				throw new RouteException("No Routes Avilable");
+			}
 	}
 
 //	@Override
