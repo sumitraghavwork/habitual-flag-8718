@@ -94,10 +94,9 @@ public class FeedbackServiceImplementation implements FeedbackService {
 		if (feedback.isPresent()) {
 			Feedback existingfeedback = feedback.get();
 
-			User feedbakUser = existingfeedback.getUser();
+			User feedbackUser = userService.findByUserLoginId(loggedInUser.getUserId());
 
-			if (feedbakUser.getUserLoginId() != user.getUserLoginId())
-				throw new UserException("Invalid User key Entered");
+			if (feedbackUser.getUserLoginId() == null)	throw new UserException("Invalid User key Entered");
 
 			existingfeedback.setUser(null);
 			existingfeedback.setReservation(null);
