@@ -42,7 +42,7 @@ public class ReservationController {
 	}
 
 	@PutMapping("/reservations/{reservationId}")
-	public ResponseEntity<Reservation> addReservation(@Valid @RequestBody Reservation reservation,
+	public ResponseEntity<Reservation> updateReservation(@Valid @RequestBody Reservation reservation,
 			@PathVariable("reservationId") Integer reservationId, @RequestParam String key)
 			throws ReservationException, BusException, UserException, LoginException, AdminException {
 
@@ -53,7 +53,7 @@ public class ReservationController {
 	}
 
 	@GetMapping("/reservations/{reservationId}")
-	public ResponseEntity<Reservation> addReservation(@PathVariable("reservationId") Integer reservationId,
+	public ResponseEntity<Reservation> getReservationById(@PathVariable("reservationId") Integer reservationId,
 			@RequestParam String key) throws ReservationException, BusException, UserException {
 
 		Reservation savedReservation = reservationService.viewReservation(reservationId, key);
