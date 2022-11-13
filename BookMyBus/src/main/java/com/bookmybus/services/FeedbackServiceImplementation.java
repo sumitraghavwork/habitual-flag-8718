@@ -102,7 +102,7 @@ public class FeedbackServiceImplementation implements FeedbackService {
 			existingfeedback.setUser(null);
 			existingfeedback.setReservation(null);
 
-			fDao.deleteById(feedbackId);
+			fDao.delete(existingfeedback);
 			return existingfeedback;
 		} else {
 			throw new FeedbackException("No feedback found with given feedbackId :" + feedbackId);

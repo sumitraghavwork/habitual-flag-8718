@@ -29,7 +29,7 @@ public class BusController {
 
 	// ***************************************************************************************************************
 	@PostMapping("/bus")
-	public ResponseEntity<Bus> addRoute(@RequestBody Bus bus, @RequestParam String key)
+	public ResponseEntity<Bus> addBusHandler(@RequestBody Bus bus, @RequestParam String key)
 			throws BusException, AdminException, LoginException {
 
 		Bus newBus = busService.addBus(bus, key);
