@@ -80,7 +80,7 @@ public class RouteController {
 	}
 	
 	@GetMapping("/route/{from}/{to}")
-	public ResponseEntity<List<Bus>> viewAllBusesHandler(@PathVariable("from") String routeFrom, @PathVariable("to") String routeTo) throws RouteException,BusException {
+	public ResponseEntity<List<Bus>> viewAllBusesHandlerFromTo(@PathVariable("from") String routeFrom, @PathVariable("to") String routeTo) throws RouteException,BusException {
 
 		List<Bus> allRoutes = routeService.viewAllBusesByRoute(routeFrom, routeTo);
 
