@@ -9,9 +9,6 @@
 - Reservation Module
 - Feedback Module
 
-<h2 align="left">User Levels</h2>
-<h4 align="left">1. Administrator</h4>
-<h4 align="left">2. User</h4>
 <br>
 
 <h2 align="left">Tech-stack</h2>
@@ -66,10 +63,13 @@
 <p align="center"> <img src="./webContent/feedback.png" alt="Feedback Controller" style="border-radius:20px"/> </p>
 
 
-## Authors and Contributors
+## Authors
 
-- [@sumitraghavwork](https://github.com/sumitraghavwork)
-- [@suraj9716](https://github.com/suraj9716)
-- [@VaibhavBedarkar](https://github.com/VaibhavBedarkar)
-- [@SuryAMoharana](https://github.com/SuryAMoharana)
-- [@Amit-singh-05](https://github.com/Amit-singh-05)
+| Contributors|Responsibility |
+| ------|------ |
+| Sumit Raghav | [@sumitraghavwork](https://github.com/sumitraghavwork) |
+| Suraj | [@suraj9716](https://github.com/suraj9716) |
+| Vaibhav Bedarkar | [@VaibhavBedarkar](https://github.com/VaibhavBedarkar) |
+| Amit Singh| [@Amit-singh-05](https://github.com/Amit-singh-05) |
+| Surya Moharana|[@SuryAMoharana](https://github.com/SuryAMoharana) |
+
