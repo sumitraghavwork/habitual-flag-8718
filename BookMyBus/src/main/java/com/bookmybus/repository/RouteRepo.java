@@ -16,4 +16,7 @@ public interface RouteRepo extends JpaRepository<Route, Integer> {
 	
 	@Query("Select r.busList from Route r where r.routeId =:rid")
 	public List<Bus> getBusListFromRouteByRouteId(@Param("rid") Integer rId);
+	
+	@Query("select r.busList from Route r where r.routeFrom=:rf and r.routeTo=:rto")
+	public List<Bus> getBusListByRoute(@Param("rf") String routeFrom, @Param("rto") String routeTo);
 }
