@@ -37,10 +37,10 @@ public class User {
 	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",message = "{user.invalid.password}")
 	private String password;
 
-	@Pattern(regexp = "^[a-b][A-Z]{3,20}", message = "{user.invalid.firstName}")
+	@Size(min = 2, max = 20, message = "{user.invalid.firstName}")
 	private String firstName;
 
-	@Pattern(regexp = "^[a-b][A-Z]{3,20}", message = "{user.invalid.lastName}")
+	@Size(min = 2, max = 20, message = "{user.invalid.lastName}")
 	private String lastName;
 
 	@Pattern(regexp = "^[0-9]{10}", message = "{user.invalid.contact}")

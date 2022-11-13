@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookmybus.access.exceptions.LoginException;
 import com.bookmybus.access.exceptions.UserException;
 import com.bookmybus.exceptions.FeedbackException;
 import com.bookmybus.exceptions.ReservationException;
@@ -36,10 +37,10 @@ public class FeedbackController {
 		return new ResponseEntity<Feedback>(addFeedback, HttpStatus.OK);
 	}
 	
-	@PutMapping("/feedbacks")
-	public ResponseEntity<Feedback> updateFeedbackHandler(@RequestBody Feedback feedback) throws FeedbackException {		
+	@PutMapping("/feedbacks/{feedbackId}")
+	public ResponseEntity<Feedback> updateFeedbackHandler(@RequestParam String key,@RequestBody Feedback feedback, @PathVariable("feedbackId") Integer feedbackId) throws FeedbackException, LoginException, UserException {		
 		
-		Feedback updatedFeedback= feedbackService.updateFeedBack(feedback);
+		Feedback updatedFeedback= feedbackService.updateFeedBack(feedback,key,feedbackId);
 				
 		return new ResponseEntity<Feedback>(updatedFeedback,HttpStatus.OK);
 		
@@ -64,8 +65,8 @@ public class FeedbackController {
 	}
 	
 	@DeleteMapping("/feedbacks/{feedbackId}")
-	public ResponseEntity<Feedback> deleteFeedbackHandler(@PathVariable Integer feedbackId) throws FeedbackException{
-		Feedback deleteFeedback = feedbackService.deleteFeedBack(feedbackId);
+	public ResponseEntity<Feedback> deleteFeedbackHandler(@RequestParam String key,@PathVariable Integer feedbackId) throws FeedbackException, LoginException, UserException{
+		Feedback deleteFeedback = feedbackService.deleteFeedBack(key,feedbackId);
 		
 		return new ResponseEntity<Feedback>(deleteFeedback, HttpStatus.ACCEPTED);
 		
