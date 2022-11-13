@@ -18,7 +18,7 @@ import com.bookmybus.access.exceptions.UserException;
 public class GlobalExceptionHandler {
 	
 	@ExceptionHandler(FeedbackException.class)
-	public ResponseEntity<MyErrorDetails> myBusExceptionHandler(FeedbackException e, WebRequest web) {
+	public ResponseEntity<MyErrorDetails> myFeedbackExceptionHandler(FeedbackException e, WebRequest web) {
 
 		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), e.getMessage(), web.getDescription(false));
 
